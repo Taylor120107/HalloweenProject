@@ -10,6 +10,8 @@ import {
 function App() {
   return (
     <div className="App">
+      <CharForm/>
+      <Read/>
       <Router>
         <Routes>
           <Route path="CharForm" element={<CharForm />} />

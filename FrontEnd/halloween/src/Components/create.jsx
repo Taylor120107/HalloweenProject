@@ -9,7 +9,7 @@ function Create() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await axios.post('http://localhost:1207/createCharacter', {
-      characterName,Movie,scareFactor,
+      characterName,movie,scareFactor,
     });
 
     console.log('CREATED:', res.data);
