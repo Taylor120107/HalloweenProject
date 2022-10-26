@@ -9,9 +9,11 @@ const halloweenSchema = new mongoose.Schema({
         require:true},
     ScareFactor: {
         type: Number,
+        min: 1,
+        max:10,
         require: true
-    }
+    },
 });
 
-const nameModel = mongoose.model("name", halloweenSchema);
-module.exports={nameModel}
+const halloweenModel = mongoose.model("halloween", halloweenSchema);
+module.exports={halloweenModel}

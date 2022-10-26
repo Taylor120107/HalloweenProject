@@ -1,27 +1,37 @@
 const router = require(`express`).Router();
 
-const { nameModel } = require("../models/schema");
+const Halloween = require("../models/schema");
+const {halloweenModel} = require ("../models/schema")
 
 
-router.get(`/hello`, (req, res) => res.send("Hello,Hello"));
+router.get(`/halloween`, (req, res) => res.send("Hello,Hello"));
 
-router.get("/getAll", (req, res) => nameModel.find({}).then(results => res.send(results)).catch(err => next(err)));
-
-
-router.post(`/newName`, async (req, res, next) => {
-    if (!req.body.name) return next({ status: 400, message: "Missing Name!" })
+router.get('/', async (req, res, next) => {
     try {
-        const result = await nameModel.create(req.body);
-        res.status(201).send(result);
+      const halloweenCharacters = await Halloween.find();
+      return res.json(halloweenCharacters);
     } catch (err) {
-        return next(err)
+      return next(err);
     }
-});
+  });
+
+router.get("/getAll", (req, res) => halloweenModel.find({}).then(results => res.send(results)).catch(err => next(err)));
+
+
+router.post('/createCharacter', async (req, res, next) => {
+    try {
+      const newCharacter = await Halloween.create(req.body);
+      return res.status(201).json(newCharacter);
+    } catch (err) {
+      return next(err);
+    }
+  });
+  
 
 router.patch(`/replace/:id`, async (req, res, next) => {
     try {
-        await nameModel.findByIdAndUpdate(req.params.id, req.query)
-        const newName = await nameModel.findById(req.params.id);
+        await halloweenModel.findByIdAndUpdate(req.params.id, req.query)
+        const newName = await halloweenModel.findById(req.params.id);
         res.send(newName);
     } catch (err) {
         return next(err);
@@ -32,7 +42,7 @@ router.patch(`/replace/:id`, async (req, res, next) => {
 router.delete(`/delete/:id`, (req, res, next) => {
     const { id } = req.params;
     console.log("ID", id);
-    nameModel.findByIdAndDelete(id).then(result => res.send(result)).catch(err => next(err));
+    halloweenModel.findByIdAndDelete(id).then(result => res.send(result)).catch(err => next(err));
 });
 
 module.exports = router;
