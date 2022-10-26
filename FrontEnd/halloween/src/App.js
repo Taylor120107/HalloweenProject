@@ -1,22 +1,23 @@
 import './App.css';
 import CharForm from './Components/CharForm';
-import Create from "./Components/create";
 import Read from "./Components/read"
 import {
-  BrowserRouter as Router, Route, Routes,
+  BrowserRouter as Router, Link, Route, Routes,
 } from 'react-router-dom';
 
 
 function App() {
   return (
     <div className="App">
-      <CharForm/>
-      <Read/>
       <Router>
+        <nav>
+          <Link to="/">Home</Link>
+          {" "}
+          <Link to="/read">Characters</Link>
+        </nav>
         <Routes>
-          <Route path="CharForm" element={<CharForm />} />
-          <Route path="create" element={<Create />} />
-          <Route path="read" element={<Read />} />
+          <Route path="/" element={<CharForm />} />
+          <Route path="/read" element={<Read />} />
         </Routes>
       </Router>
     </div>
