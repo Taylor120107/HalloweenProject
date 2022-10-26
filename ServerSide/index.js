@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 const route = require(`./routes/route`);
 
-app.use("halloween",route);
+app.use(route);
 
 const server = app.listen(1207,() => {
     console.log(`server has started succesfully on port number ${server.address().port}`)});
