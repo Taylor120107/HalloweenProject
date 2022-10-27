@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-
-
 function Read() {
   const [characters, setCharacters] = useState([]);
 
@@ -11,12 +9,18 @@ function Read() {
     setCharacters(res.data);
   };
 
-  useEffect(() => {getCharacters()}, []);
+  useEffect(() => { getCharacters() }, []);
 
   const deleteCharacter = async (id) => {
     await axios.delete("http://localhost:1207/halloween/delete/" + id);
     getCharacters();
   }
+  const updateCharacter = async (id) => {
+    await axios.patch("http://localhost:1207/halloween/replace" + id);
+    getCharacters();
+  }
+
+
 
   return (
     <>
@@ -25,7 +29,7 @@ function Read() {
           <p>{name}</p>
           <p>{movie}</p>
           <p>{`${scareFactor}/10`}</p>
-          <input type="submit" value="Update"></input>
+          <button type="button" onClick={() => updateCharacter(_id)}>UPDATE</button>
           <button type="button" onClick={() => deleteCharacter(_id)}>DELETE</button>
         </div>
       ))}

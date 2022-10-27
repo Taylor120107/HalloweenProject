@@ -1,13 +1,14 @@
 .App {
   text-align: center;
-  /* background-image: url("https://static.vecteezy.com/system/resources/previews/003/226/310/large_2x/halloween-dark-night-scenery-background-concept-free-vector.jpg") ; */
-  background-repeat: no-repeat;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/003/226/310/large_2x/halloween-dark-night-scenery-background-concept-free-vector.jpg") ; 
+  background-repeat: repeat;
   background-size: contain;
 }
 
 * {
   font-family: 'Creepster', 'cursive';
-  color: red;
+  color:orangered;
+  
   
 }
 

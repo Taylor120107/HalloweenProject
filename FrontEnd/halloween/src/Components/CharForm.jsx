@@ -19,8 +19,11 @@ function Create() {
     <form onSubmit={handleSubmit}>
       
         <h1> Please add to my list of Halloween Characters!</h1>
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7rczqTTvGhQWwKDBvgR3_Rx6ldEdvHRMOEEdibHNesCw4NUrZo8_HtZO72JPmtSsV5-A&usqp=CAU"></img>
+        {/* <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7rczqTTvGhQWwKDBvgR3_Rx6ldEdvHRMOEEdibHNesCw4NUrZo8_HtZO72JPmtSsV5-A&usqp=CAU"></img> */}
+        <br/>
+        <br/>
+        <br/>
         <br/>
         <br/>
         <label htmlFor="Name">Character Name:
@@ -36,6 +39,18 @@ function Create() {
         </label>
         <br/>
         <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        
+
+
         <input type="submit" value="Submit"></input>
       
     </form>
