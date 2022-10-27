@@ -1,27 +1,38 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
+
+
 function Read() {
   const [characters, setCharacters] = useState([]);
 
-  useEffect(() => {
-    const getCharacter = async () => {
-      const res = await axios.get('http://localhost:1207/halloween/getAll');
-      setCharacters(res.data);
-    };
-    getCharacter();
-  });
+  const getCharacters = async () => {
+    const res = await axios.get('http://localhost:1207/halloween/getAll');
+    setCharacters(res.data);
+  };
+
+  useEffect(() => {getCharacters()}, []);
+
+  const deleteCharacter = async (id) => {
+    await axios.delete("http://localhost:1207/halloween/delete/" + id);
+    getCharacters();
+  }
+
   return (
     <>
-      {characters.map(({ name, movie, scareFactor }) => (
-        <>
+      {characters.map(({ _id, name, movie, scareFactor }) => (
+        <div key={_id}>
           <p>{name}</p>
           <p>{movie}</p>
           <p>{`${scareFactor}/10`}</p>
-        </>
+          <input type="submit" value="Update"></input>
+          <button type="button" onClick={() => deleteCharacter(_id)}>DELETE</button>
+        </div>
       ))}
     </>
   );
 }
+
+
 
 export default Read;
