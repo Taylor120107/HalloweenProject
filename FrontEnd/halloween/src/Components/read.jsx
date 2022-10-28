@@ -15,10 +15,10 @@ function Read() {
     await axios.delete("http://localhost:1207/halloween/delete/" + id);
     getCharacters();
   }
-  const updateCharacter = async (id) => {
-    await axios.patch("http://localhost:1207/halloween/replace" + id);
-    getCharacters();
-  }
+  // const updateCharacter = async (id) => {
+  //   await axios.patch("http://localhost:1207/halloween/replace" + id);
+  //   getCharacters();
+  // }
 
 
 
@@ -29,7 +29,7 @@ function Read() {
           <p>{name}</p>
           <p>{movie}</p>
           <p>{`${scareFactor}/10`}</p>
-          <button type="button" onClick={() => updateCharacter(_id)}>UPDATE</button>
+          <button type="button" >UPDATE</button>
           <button type="button" onClick={() => deleteCharacter(_id)}>DELETE</button>
         </div>
       ))}
